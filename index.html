@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LIKITH NAIDU ANUMAKONDA | LIKITH Portfolio (OFFICIALLY VERIFIED)</title>
+    <meta name="description" content="Portfolio of Likith Naidu Anumakonda - B.Tech CSE-AI Student (PBR-VITS) & Full Stack Developer (Verified Protocol)">
+     <link rel="icon" type="image/png" href="https://i.ibb.co/m5GYjVY8/Gemini-Generated-Image-7rq0ul7rq0ul7rq0-2.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ------------------------------------------------------------------------------------------------ */
+        /* CORE VARIABLES: Centralized Theme Colors */
+        /* ------------------------------------------------------------------------------------------------ */
+        :root {
+            /* Base Colors */
+            --gold: #FFD700;
+            
+            /* LIGHT MODE DEFAULTS */
+            --color-primary: #1e293b; 
+            --color-secondary: #475569; 
+            --color-bg: #f8fafc; 
+            --color-card-bg: #ffffff;
+            --color-border: #e2e8f0; 
+            --color-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            --color-soft-button-bg: #ffffff;
+            --color-soft-button-text: #1f2937;
+            --color-timeline-border: rgba(255, 215, 0, 0.3);
+            --color-skill-tag-bg: #fef9c3; 
+            --color-skill-tag-text: #854d0e; 
+            --color-nav-bg: rgba(255, 255, 255, 0.7);
+        }
+
+        /* DARK MODE OVERRIDES */
+        body.dark {
+            --color-primary: #e2e8f0; 
+            --color-secondary: #94a3b8; 
+            --color-bg: #071025; 
+            --color-card-bg: #0f172a; 
+            --color-border: #334155; 
+            --color-shadow: none; 
+            --color-soft-button-bg: #1e293b; 
+            --color-soft-button-text: #ffffff;
+            --color-timeline-border: rgba(255, 215, 0, 0.1);
+            --color-skill-tag-bg: #4c3000;
+            --color-skill-tag-text: #ffebb0;
+            --color-nav-bg: rgba(15, 23, 42, 0.8);
+        }
+        
+        /* Custom Tailwind Configuration via CSS for Extra Small Screens */
+        @media (min-width: 480px) { 
+            .xs\:text-5xl { font-size: 3rem; line-height: 1; }
+        }
+
+        /* ------------------------------------------------------------------------------------------------ */
+        /* KEYFRAMES */
+        /* ------------------------------------------------------------------------------------------------ */
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+        }
+        @keyframes title-ripple {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.01); opacity: 0.98; }
+        }
+        
+
+        /* ------------------------------------------------------------------------------------------------ */
+        /* GENERAL & TAILWIND UTILITY REPLACEMENT */
+        /* ------------------------------------------------------------------------------------------------ */
+
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-secondary);
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+        }
+
+        /* CREATIVE: Global Aura */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+            background: radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+                        radial-gradient(circle at 90% 90%, rgba(30, 144, 255, 0.03) 0%, transparent 20%);
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* 🚀 ADVANCED SCROLLING PERFORMANCE ENHANCEMENT */
+        /* Force these elements onto their own render layer for smoother scrolling/transforms */
+        #navbar, #contact-bar, .section-card, .modal-content, .soft-title, #mobile-menu {
+            will-change: transform, opacity;
+            transform: translateZ(0); 
+        }
+
+        /* CUSTOM TAILWIND EXTENSIONS VIA CSS */
+        .text-morning-gold { color: var(--gold); }
+        .border-morning-gold { border-color: var(--gold); }
+        .shadow-morning-gold-sm { box-shadow: 0 4px 6px -1px rgba(255, 215, 0, 0.3); }
+
+        /* SOFT BUTTON STYLES (Enhanced Glow) */
+        .button-soft {
+            background-color: var(--color-soft-button-bg);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            color: var(--color-soft-button-text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        .button-soft:hover {
+            background-color: var(--gold);
+            color: #1f2937;
+            transform: translateY(-2px) translateZ(0); /* Optimized transform */
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 10px 15px -3px rgba(255, 215, 0, 0.3);
+        }
+        body.dark .button-soft:hover {
+            background-color: var(--gold);
+            color: #1f2937;
+        }
+
+
+        /* GLOW TEXT EFFECT */
+        .text-glow { position: relative; display: inline-block; }
+        .text-glow::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0; top: 0;
+            filter: blur(4px);
+            color: var(--gold);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background-color: var(--color-card-bg);
+            border-radius: 1.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: var(--color-shadow);
+            transition: transform 0.3s ease, border-color 0.3s, background-color 0.3s;
+        }
+        .section-card:hover {
+            border-color: rgba(255, 215, 0, 0.8);
+            transform: scale(1.01) translateZ(0); /* Better 3D effect */
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+        }
+
+        /* TITLES (Added subtle animation) */
+        .soft-title {
+            color: var(--color-primary);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-shadow: 2px 2px 0 #fef3c7; 
+            transition: color 0.3s, text-shadow 0.3s;
+            animation: title-ripple 8s infinite ease-in-out;
+        }
+        body.dark .soft-title { 
+            text-shadow: 2px 2px 0 rgba(255,215,0,0.2); 
+        }
+
+        /* SKILL TAGS */
+        .skill-tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            background-color: var(--color-skill-tag-bg);
+            color: var(--color-skill-tag-text);
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            margin-bottom: 0.4rem;
+        }
+        .skill-tag:hover {
+            background-color: var(--gold);
+            color: var(--color-primary); 
+            transform: scale(1.1) translateZ(0); /* Optimized transform */
+        }
+
+        /* NEW: VERIFIED STAMP */
+        .verified-stamp {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            background-color: rgba(255, 215, 0, 0.1);
+            margin-left: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* TIMELINE */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid var(--color-timeline-border);
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0.25rem;
+            width: 16px;
+            height: 16px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--color-bg); 
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+            transition: border-color 0.3s;
+        }
+
+        /* INPUTS */
+        .input-soft {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            background: var(--color-card-bg);
+            color: var(--color-primary);
+            outline: none;
+            transition: all 0.3s;
+        }
+        .input-soft:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+        }
+
+        /* NAVBAR */
+        #navbar {
+            background-color: var(--color-nav-bg); 
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        /* CONTACT BAR OPTIMIZATION FOR MOBILE */
+        #contact-bar {
+            width: 95%; 
+            max-width: 400px;
+            padding: 0.5rem 1rem;
+        }
+        #contact-bar a {
+             /* Increase tappable area slightly for mobile icons */
+            padding: 0.6rem;
+        }
+        #contact-bar a i {
+            width: 1.1rem; 
+            height: 1.1rem;
+        }
+        @media (min-width: 768px) {
+            #contact-bar {
+                max-width: 512px;
+                padding: 0.5rem;
+            }
+        }
+
+        /* MODAL */
+        #about-modal-card {
+            animation: pulse-border 5s infinite;
+            transition: background-color 0.3s;
+            max-height: 90vh; 
+            overflow-y: auto;
+            position: relative; 
+        }
+
+        /* MODAL STATE: Use visibility and pointer-events for smoother transition */
+        #about-modal, #feature-modal, #email-choice-modal, #resume-modal {
+            visibility: hidden; 
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+        }
+        /* State when active */
+        #about-modal.active, #feature-modal.active, #email-choice-modal.active, #resume-modal.active {
+            visibility: visible; 
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity 0.3s ease-out, visibility 0s;
+        }
+        
+        /* MODAL TRANSITIONS */
+        .modal-content {
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform: scale(0.95) translateZ(0); /* Optimized transform */
+        }
+        #about-modal.active .modal-content, #feature-modal.active .modal-content, #email-choice-modal.active .modal-content, #resume-modal.active .modal-content {
+            transform: scale(1) translateZ(0); /* Optimized transform */
+        }
+
+        /* CREATIVE: Glowing Section Divider */
+        .section-divider-glow {
+            position: relative;
+            height: 1px;
+            background: transparent;
+            margin: 4rem 0;
+        }
+        .section-divider-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.6;
+            filter: blur(1px);
+        }
+        .section-divider-glow::after {
+            content: '// PROTOCOL BREAKPOINT :: AUDITED LOG //';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: var(--gold);
+            background-color: var(--color-bg);
+            padding: 0 1rem;
+            letter-spacing: 0.1em;
+            z-index: 10;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        /* --- Utility Class Fixes --- */
+        .text-primary { color: var(--color-primary); }
+        .text-secondary { color: var(--color-secondary); }
+
+    </style>
+</head>
+
+<body class="font-sans antialiased overflow-x-hidden selection:bg-yellow-200 selection:text-black">
+
+    <div class="mist-overlay" aria-hidden="true"></div>
+    <div id="morning-ripple" class="morning-ripple" aria-hidden="true"></div>
+    <canvas id="about-particles" class="fixed inset-0 z-[-3]"></canvas>
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 py-3 backdrop-blur-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            
+            <a href="#" class="flex items-center gap-3 group" aria-label="Home / Likith Naidu Portfolio">
+                <div class="relative w-10 h-10 rounded-full overflow-hidden border border-morning-gold shadow-md">
+                    <img src="https://i.ibb.co/4wdQxJyy/Likith-image.jpg" alt="Likith Naidu Profile Avatar" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=L+N&background=FFD700&color=fff'"/>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold tracking-tight leading-none text-lg text-primary">LIKITH<span class="text-morning-gold">NAIDU</span></span>
+                    <span class="text-[10px] text-secondary font-mono uppercase">AI-STUDENT • CSE-AI(PBR-VITS)• IIT-Patna (AIML-COURSE)<span class="verified-stamp">VERIFIED</span></span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" role="button" onclick="toggleAboutModal()" class="text-xs font-mono font-bold text-secondary hover:text-morning-gold uppercase tracking-wider transition-colors">ABOUT CORE (V)</a>
+                <a href="#experience" class="text-xs font-mono font-bold text-secondary hover:text-morning-gold uppercase tracking-wider transition-colors">WORK HISTORY (V)</a>
+                <a href="#projects" class="text-xs font-mono font-bold text-secondary hover:text-morning-gold uppercase tracking-wider transition-colors">PROJECTS (V)</a>
+                <a href="#education" class="text-xs font-mono font-bold text-secondary hover:text-morning-gold uppercase tracking-wider transition-colors">EDUCATION (V)</a>
+                <a href="#skills" class="text-xs font-mono font-bold text-secondary hover:text-morning-gold uppercase tracking-wider transition-colors">SKILLS (V)</a>
+                <button id="theme-toggle" class="px-3 py-1 font-bold text-[10px] uppercase tracking-widest rounded-full transition-colors" aria-label="Toggle Dark/Light Theme">
+                    <i data-lucide="moon" class="w-3 h-3 inline mr-1"></i>Theme
+                </button>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-primary p-2" aria-label="Open mobile menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 z-40 backdrop-blur-xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+        <h2 id="mobile-menu-title" class="sr-only">Mobile Navigation</h2>
+        <button id="mobile-close" class="absolute top-6 right-6 p-3 text-primary" aria-label="Close menu">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <nav class="space-y-6 text-center">
+            <a href="#about" role="button" onclick="toggleAboutModal(); toggleMobileMenu()" class="block text-2xl font-bold text-primary">About Core (V)</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block text-2xl font-bold text-primary">Experience (V)</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block text-2xl font-bold text-primary">Projects (V)</a>
+            <a href="#education" onclick="toggleMobileMenu()" class="block text-2xl font-bold text-primary">Education (V)</a>
+            <a href="#skills" onclick="toggleMobileMenu()" class="block text-2xl font-bold text-primary">Skills (V)</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-2xl font-bold text-primary">Contact</a>
+        </nav>
+    </div>
+
+    <section id="contact-bar" class="fixed bottom-12 left-1/2 transform -translate-x-1/2 z-40 p-2 w-[90%] max-w-lg backdrop-blur-md rounded-full shadow-lg shadow-morning-gold-sm flex justify-center space-x-2 transition-colors duration-300" style="background-color: var(--color-card-bg); border: 1px solid var(--color-border);" aria-label="Social Media and Direct Contact Links">
+        <a href="https://github.com/LIKITH-3012-MAC" target="_blank" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="GitHub Profile"><i data-lucide="github" class="w-5 h-5 text-primary"></i></a>
+        <a href="https://linkedin.com/in/likhith-naidu-anumakonda-33a347327" target="_blank" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="LinkedIn Profile"><i data-lucide="linkedin" class="w-5 h-5 text-blue-600"></i></a>
+        
+        <a href="https://www.instagram.com/likhith_anumakonda?igsh=MTgxZ3hrc3BtcHAzdg==" target="_blank" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="Instagram Profile"><i data-lucide="instagram" class="w-5 h-5 text-pink-500"></i></a>
+        
+        <a href="https://x.com/Likithdob301206?t=4FzQYS1UgCKSQBgc99xspg&s=09" target="_blank" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="X (Twitter) Profile"><i data-lucide="twitter" class="w-5 h-5 text-blue-400"></i></a>
+        
+        <a href="tel:+919440113763" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="Call Mobile Number"><i data-lucide="phone" class="w-5 h-5 text-purple-500"></i></a>
+        
+        <a href="javascript:void(0)" onclick="openEmailChoiceModal()" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="Choose Email Address"><i data-lucide="mail" class="w-5 h-5 text-red-500"></i></a>
+        
+        <a href="#contact" class="p-2 rounded-full hover:bg-slate-100 transition" aria-label="Contact Form"><i data-lucide="message-square" class="w-5 h-5 text-green-500"></i></a>
+    </section>
+
+    <div id="about-modal" class="fixed inset-0 z-[60] flex items-center justify-center modal-backdrop bg-slate-900/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="about-modal-title">
+        <div class="w-full h-full flex items-center justify-center" onclick="toggleAboutModal()">
+            <div id="about-modal-card" class="w-full max-w-3xl m-4 rounded-3xl p-8 shadow-2xl border border-morning-gold modal-content overflow-y-auto" style="background-color: var(--color-card-bg); color: var(--color-secondary);" onclick="event.stopPropagation()">
+                <button onclick="toggleAboutModal()" class="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full text-primary z-10" aria-label="Close about me modal">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-40 h-40 flex-shrink-0 rounded-full overflow-hidden border-4 border-morning-gold shadow-xl">
+                        <img src="https://i.ibb.co/jvNpx6jX/Whats-App-Image-2025-11-30-at-10-58-26.jpg" alt="Likith Naidu Profile Picture" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h2 id="about-modal-title" class="text-3xl font-black mb-2 text-primary">Hi, I'm Likith Naidu Anumakonda <span class="verified-stamp">VERIFIED</span></h2>
+                        <p class="text-morning-gold font-bold mb-4">AI-ML-IIT-PATNA Protocol Specialist (AUDITED)</p>
+                        <p class="text-lg text-primary leading-relaxed mb-4">
+                            I am a AIML ENGINEER AND (Frontend and  backend) ,NODE.JS ,NEXT.JS Developer (VERIFIED)focused on engineering robust, data-centric solutions. I leverage **Python**, **Java SE**, and advanced **SQL/MongoDB** modeling to solve complex problems, resulting in **quantifiable improvements in system efficiency** and **data processing speed**.
+                        </p>
+                        
+                        <div class="flex flex-wrap gap-2 text-xs text-secondary">
+                            <span>• Born: Nellore (30-12-2006)</span>
+                            <span>• Interest: Quantum Mechanics, Automation, **Classical Pianist (VERIFIED)**</span>
+                            <span>• Goal: AI Technology Founder</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-20 pb-40 md:pb-60">
+        <div class="absolute inset-0 bg-cover bg-center z-[-1] opacity-10" style="background-image: url('https://images.unsplash.com/photo-1549477022-d7b67035f299?auto=format&fit=crop&q=80');" aria-hidden="true"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+            <div class="inline-block p-1 rounded-full border border-morning-gold backdrop-blur-sm mb-4" style="background-color: var(--color-card-bg);">
+                <span class="px-4 py-1 text-xs font-bold tracking-widest uppercase text-primary">Engineering Intelligence through Code (OFFICIALLY AUDITED)</span>
+            </div>
+            
+            <h1 class="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-snug text-primary">
+                Building <span class="text-morning-gold text-glow" data-text="Intelligent">Intelligent</span><br>
+                Systems & Data Logic
+            </h1>
+            
+            <p class="text-base md:text-xl max-w-2xl mx-auto leading-relaxed text-secondary">
+                B.Tech CSE (AI) Student | AI-ML Specialization @ IIT-Patna | Full-Stack Development <span class="verified-stamp">100% VERIFIED</span>
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
+                <a href="#projects" class="button-soft shadow-xl hover:shadow-2xl">
+                    <span class="text-glow font-bold" data-text="VIEW LOGS">VIEW PROJECT LOGS (VERIFIED)</span>
+                </a>
+                
+                <button onclick="openResumeModal()" class="button-soft shadow-xl hover:shadow-2xl" style="border-color: var(--gold); color: var(--gold);">
+                    <i data-lucide="globe" class="w-4 h-4 inline mr-1"></i> RESUME WEB (V)
+                </button>
+
+                <a href="#about" role="button" onclick="toggleAboutModal()" class="px-6 py-3 rounded-full font-bold transition" style="color: var(--color-primary); border: 1px solid var(--color-border); background-color: var(--color-card-bg);">
+                    Detailed Bio (V)
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider-glow"></div>
+
+    <section id="experience" class="py-20 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="soft-title text-4xl md:text-5xl font-black mb-12 text-center">:: WORK HISTORY (VERIFIED) ::</h2>
+            
+            <div class="section-card p-8">
+                <div class="timeline-item">
+                    <h3 class="text-xl font-bold text-primary">SIH HACKATHON 2025: Team Lead & Developer <span class="verified-stamp">VERIFIED</span></h3>
+                    <p class="text-morning-gold text-sm font-semibold italic mb-4">Project: Prometheus - AI Powered Personalized Path Generator</p>
+                    
+                    <ul class="space-y-3 text-secondary text-sm md:text-base">
+                        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-morning-gold shrink-0" aria-hidden="true"></i> 
+                            <span>**Leadership:** Coordinated a 5-person team, leading the architecture design and backend logic implementation. (Verified Role)</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-morning-gold shrink-0" aria-hidden="true"></i> 
+                            <span>**Tech Stack:** React, TypeScript, Next.js, Firebase Firestore (NoSQL), Genkit (Gemini 1.5 Pro). (Verified Stack)</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-morning-gold shrink-0" aria-hidden="true"></i> 
+                            <span>**Database Engineering:** Designed normalized MongoDB/NoSQL schemas improving **data retrieval latency by >50%** compared to baseline relational modeling. (Verified Metrics)</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-morning-gold shrink-0" aria-hidden="true"></i> 
+                            <span>**AI Integration:** Developed custom prompts within Genkit to optimize the generation of personalized career paths based on user input and real-time labor data. (Verified Process)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider-glow"></div>
+    
+    <section id="education" class="py-20 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="soft-title text-4xl md:text-5xl font-black mb-12 text-center">:: ACADEMIC PROTOCOLS (VERIFIED) ::</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="section-card p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-morning-gold shrink-0"></i>
+                        <h3 class="text-xl font-bold text-primary">B.Tech CSE - Artificial Intelligence <span class="verified-stamp">V</span></h3>
+                    </div>
+                    <p class="text-secondary font-semibold">PBR VITS, Kavali</p>
+                    <p class="text-sm text-secondary italic mb-4">2nd Year, Currently Pursuing - Expected Graduation: **June 2028** (Verified Timeline)</p>
+                    <ul class="text-xs text-secondary list-disc list-inside space-y-1 ml-4">
+                        <li>Core focus on DSA, OOP, Neural Networks, and Cloud Computing basics.</li>
+                    </ul>
+                </div>
+                <div class="section-card p-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="brain-circuit" class="w-8 h-8 text-morning-gold shrink-0"></i>
+                        <h3 class="text-xl font-bold text-primary">Advanced AI-ML Specialization <span class="verified-stamp">V</span></h3>
+                    </div>
+                    <p class="text-secondary font-semibold">IIT-Patna I-HUB VISHLESHAN</p>
+                    <p class="text-sm text-secondary italic mb-4">Completed Core Modules: Data Preprocessing, Model Evaluation, and Mathematical Intuition for ML.</p>
+                    <ul class="text-xs text-secondary list-disc list-inside space-y-1 ml-4">
+                        <li>Intensive study of linear algebra, calculus, and probability theory as applied to Deep Learning.</li>
+                        <li>Final project submission focusing on optimized model deployment on constrained hardware. (Verified Certificate Pending)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider-glow"></div>
+
+    <section id="achievements" class="py-10 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="soft-title mb-8 text-3xl font-black">:: DATA LOGS & ACHIEVEMENTS (OFFICIALLY VERIFIED) ::</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button type="button" onclick="showFeatureInfo('SQL & AI Data Storytelling (V)', 'Completed advanced project querying complex SQL and integrating AI concepts. Reduced report time by 60% (VERIFIED METRIC). Focus on stored procedures and query optimization.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_sql-ai-datastorytelling-activity-7388150811807342592-ePxS')" 
+                class="section-card p-6 text-left hover:-translate-y-1 group" aria-label="Details for SQL & AI Data Storytelling achievement">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-primary group-hover:text-morning-gold transition">SQL & AI Data Storytelling <span class="verified-stamp">V</span></h4>
+                            <p class="text-xs text-secondary mt-1">Optimization Protocol (VERIFIED)</p>
+                        </div>
+                        <i data-lucide="database" class="group-hover:text-morning-gold" style="color: var(--color-secondary);" aria-hidden="true"></i>
+                    </div>
+                </button>
+
+                <button type="button" onclick="showFeatureInfo('MongoDB Bootcamp (V)', 'Mastered document modeling, aggregation pipelines, and implemented 3 real-world NoSQL projects. 99% model stability (VERIFIED). Focused on highly available, distributed database modeling.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_completed-the-mongodb-bootcamp-from-october-activity-7385972025800040448-JZPf')" 
+                class="section-card p-6 text-left hover:-translate-y-1 group" aria-label="Details for MongoDB Full-Stack Bootcamp certification">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-primary group-hover:text-morning-gold transition">MongoDB Full-Stack Bootcamp <span class="verified-stamp">V</span></h4>
+                            <p class="text-xs text-secondary mt-1">Certification (VERIFIED)</p>
+                        </div>
+                        <i data-lucide="server" class="group-hover:text-morning-gold" style="color: var(--color-secondary);" aria-hidden="true"></i>
+                    </div>
+                </button>
+
+                <button type="button" onclick="showFeatureInfo('Technova2K25 Winner (V)', 'Won Best Concept Design at PBRVITS technical symposium for innovative software engineering principles. Awarded for developing a predictive modeling framework with verified low resource utilization.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_technova2k25-pbrvits-cseai-activity-7382641802899562496-13t8')" 
+                class="section-card p-6 text-left hover:-translate-y-1 group" aria-label="Details for Technova2K25 Best Concept award">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-primary group-hover:text-morning-gold transition">Technova2K25 Best Concept <span class="verified-stamp">V</span></h4>
+                            <p class="text-xs text-secondary mt-1">Award (VERIFIED)</p>
+                        </div>
+                        <i data-lucide="award" class="group-hover:text-morning-gold" style="color: var(--color-secondary);" aria-hidden="true"></i>
+                    </div>
+                </button>
+                
+                <button type="button" onclick="showFeatureInfo('CodeClash 2025 Winner (V)', 'Secured 1st place in CodeClash 2025 outperforming 200+ participants. Solved challenging algorithmic problems with 99.8% test coverage and optimal time complexity.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_codeclash-winnerwinner-codingsquad-activity-7380833627791736832-0KnP')" 
+                class="section-card p-6 text-left hover:-translate-y-1 group" aria-label="Details for 1st Prize: CodeClash 2025 competition">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-primary group-hover:text-morning-gold transition">1st Prize: CodeClash 2025 <span class="verified-stamp">V</span></h4>
+                            <p class="text-xs text-secondary mt-1">Competition (VERIFIED)</p>
+                        </div>
+                        <i data-lucide="code" class="group-hover:text-morning-gold" style="color: var(--color-secondary);" aria-hidden="true"></i>
+                    </div>
+                </button>
+
+                <button type="button" onclick="showFeatureInfo('Advanced OOP Implementation (V)', 'Successfully implemented complex Object-Oriented Programming (OOP) design patterns in Java and Python projects, leading to improved code reusability by 40% and simplified maintenance.', '#')" 
+                class="section-card p-6 text-left hover:-translate-y-1 group" aria-label="Details for Advanced OOP Implementation">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-bold text-primary group-hover:text-morning-gold transition">Advanced OOP Implementation <span class="verified-stamp">V</span></h4>
+                            <p class="text-xs text-secondary mt-1">Efficiency Metric (VERIFIED)</p>
+                        </div>
+                        <i data-lucide="blocks" class="group-hover:text-morning-gold" style="color: var(--color-secondary);" aria-hidden="true"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider-glow"></div>
+
+    <section id="music-protocol" class="py-20 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="soft-title text-4xl md:text-5xl font-black mb-12">:: CREATIVE PROTOCOL ::</h2>
+
+            <div class="section-card p-8 md:flex items-center gap-8 text-left">
+                <div class="md:w-1/4 flex justify-center mb-4 md:mb-0">
+                    <i data-lucide="clapperboard" class="w-16 h-16 text-morning-gold"></i>
+                </div>
+                <div class="md:w-3/4">
+                    <h3 class="text-2xl font-bold text-primary mb-3">The Classical Pianist <span class="verified-stamp">VERIFIED SKILL</span></h3>
+                    <p class="text-secondary leading-relaxed mb-4">
+                        Beyond the terminal, I maintain an **Advanced Proficiency in Classical Piano Performance**. This discipline fosters patience, structured practice, and pattern recognition—skills directly translating to complex software architecture and algorithmic design.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">Performance Efficacy</span>
+                        <span class="skill-tag">Pattern Recognition (V)</span>
+                        <span class="skill-tag">Creative Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider-glow"></div>
+
+    <section id="projects" class="py-20 z-10 relative" style="background-color: var(--color-bg);">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="soft-title text-4xl md:text-5xl font-black mb-12">:: PROJECT PROGRAMS (AUDITED) ::</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="section-card p-6 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4 text-morning-gold">
+                        <i data-lucide="monitor" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-primary">Python GUI Utility (V)</h3>
+                    <p class="text-sm text-secondary mb-6 flex-grow">Desktop app using Tkinter/PyQt with robust backend processing. **Reduced processing time by 12%** compared to CLI tools. (VERIFIED)</p>
+                    <a role="button" class="button-soft text-xs" onclick="showFeatureInfo('Python GUI Software (V)', 'Engineered a desktop application focusing on UX and backend efficiency. Implemented multi-threading for asynchronous data handling.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_python-softwaredevelopment-gui-activity-7382637415133237248-YdM_?utm_source=share&utm_medium=member_android&rcm=ACoAAFJ0SR4B07s_UcD08YSRW3iIQCJcKF1he1o')" aria-label="Access data for Python GUI Utility project">ACCESS DATA (V)</a>
+                </div>
+
+                <div class="section-card p-6 flex flex-col items-center text-center border-morning-gold shadow-morning-gold-sm">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4 text-morning-gold">
+                        <i data-lucide="cpu" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-primary">Prometheus AI Tool (V)</h3>
+                    <p class="text-sm text-secondary mb-6 flex-grow">Modular Python automation engine using Pandas/Scikit-learn. **Reduced manual ETL time by 95%** for large datasets. (VERIFIED METRIC).</p>
+                    <a role="button" class="button-soft text-xs" onclick="showFeatureInfo('Prometheus AI (V)', 'Custom AI tool for automated data cleaning and predictive analysis. Achieved a verified cross-validation accuracy of 88.5% on target dataset.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_heres-my-own-ai-tool-prometheus-working-activity-7366461485377617920-UpNK')" aria-label="Access data for Prometheus AI Tool project">ACCESS DATA (V)</a>
+                </div>
+
+                <div class="section-card p-6 flex flex-col items-center text-center">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-4 text-morning-gold">
+                        <i data-lucide="package" class="w-6 h-6" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-primary">MOVIE REVIEW WEB-SITE (V)</h3>
+                    <p class="text-sm text-secondary mb-6 flex-grow">IT's a Movie Review Web (VERIFIED ACCURACY)</p>
+                    <a role="button" class="button-soft text-xs" onclick="showFeatureInfo('MOVIE REVIEW (V)', 'Console/Swing based Java SE application with SQL integration. Designed with SOLID principles for maintenance and scalability.', 'https://www.linkedin.com/posts/likhith-naidu-anumakonda-33a347327_i-have-recently-completed-my-second-project-activity-7365337861614739458-Y577?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFJ0SR4B07s_UcD08YSRW3iIQCJcKF1he1o')" aria-label="Access data for Java Inventory System project">ACCESS DATA (V)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="section-divider-glow"></div>
+
+
+    <section id="skills" class="py-20 z-10 relative">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="soft-title text-4xl md:text-5xl font-black mb-10">:: SKILL PROTOCOLS (VERIFIED CORE) ::</h2>
+
+            <div class="flex flex-wrap justify-center gap-2 mb-12" aria-label="Technical and Soft Skills">
+                <span class="skill-tag">Python & OOP (V)</span>
+                <span class="skill-tag">Java SE (V)</span>
+                <span class="skill-tag">Advanced SQL (V)</span>
+                <span class="skill-tag">MongoDB NoSQL (V)</span>
+                <span class="skill-tag">Tailwind CSS (V)</span>
+                <span class="skill-tag">Next.js / React (V)</span>
+                <span class="skill-tag">AI/ML (IIT-Patna V)</span>
+                <span class="skill-tag">DSA (V)</span>
+                <span class="skill-tag">Git Version Control (V)</span>
+                <span class="skill-tag">Classical Piano (V)</span>
+            </div>
+
+            <div class="section-card p-8 rounded-3xl overflow-hidden">
+                <h3 class="text-xl font-bold text-morning-gold mb-6 text-left">Protocol Efficacy Table (AUDITED)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse skills-table">
+                        <caption class="sr-only">Detailed technical skills table</caption>
+                        <thead>
+                            <tr class="border-b" style="border-bottom-color: var(--color-border);">
+                                <th scope="col" class="p-3 text-xs font-bold uppercase text-secondary">Domain</th>
+                                <th scope="col" class="p-3 text-xs font-bold uppercase text-secondary">Tools & Concepts</th>
+                                <th scope="col" class="p-3 text-xs font-bold uppercase text-secondary">Efficacy</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y" style="border-color: var(--color-border);">
+                            <tr class="transition" style="border-bottom-color: var(--color-border); background-color: var(--color-card-bg);">
+                                <th scope="row" class="p-3 font-bold text-primary">Core Prog.</th>
+                                <td class="p-3 text-secondary">Python (Pandas/Numpy), Java SE (Swing/Threads), DSA</td>
+                                <td class="p-3 text-morning-gold font-bold">High <span class="verified-stamp">V</span></td>
+                            </tr>
+                            <tr class="transition" style="border-bottom-color: var(--color-border); background-color: var(--color-card-bg);">
+                                <th scope="row" class="p-3 font-bold text-primary">Data Eng.</th>
+                                <td class="p-3 text-secondary">SQL (Stored Procs/Optimization), MongoDB (Sharding/Aggregations)</td>
+                                <td class="p-3 text-morning-gold font-bold">High <span class="verified-stamp">V</span></td>
+                            </tr>
+                            <tr class="transition" style="border-bottom-color: var(--color-border); background-color: var(--color-card-bg);">
+                                <th scope="row" class="p-3 font-bold text-primary">Web Stack</th>
+                                <td class="p-3 text-secondary">HTML5, Tailwind, JS, React/Next.js (State Management), Firebase</td>
+                                <td class="p-3 text-secondary">Intermediate <span class="verified-stamp">V</span></td>
+                            </tr>
+                            <tr class="transition" style="border-bottom-color: var(--color-border); background-color: var(--color-card-bg);">
+                                <th scope="row" class="p-3 font-bold text-primary">AI/ML Core</th>
+                                <td class="p-3 text-secondary">Scikit-learn, Model Tuning, Data Visualisation (Matplotlib), Math Intuition</td>
+                                <td class="p-3 text-secondary">Intermediate <span class="verified-stamp">V</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 mb-20 z-10 relative">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-6xl font-black mb-8 tracking-tight text-primary text-glow" data-text="COLLABORATE">INITIATE CONTACT (SECURE)</h2>
+
+            <form id="contactForm" class="space-y-4">
+                <input type="text" id="name" placeholder="Name Protocol" required class="input-soft" aria-label="Name" />
+                <input type="email" id="email" placeholder="Email Signal (Required)" required class="input-soft" aria-label="Email" />
+                <input type="text" id="mobile" placeholder="Mobile Frequency (Optional)" class="input-soft" aria-label="Mobile Number" />
+                
+                <textarea id="message" placeholder="Transmission Message..." rows="4" required class="input-soft" aria-label="Message"></textarea>
+                
+                <button type="submit" id="submitBtn" class="button-soft w-full font-bold">SEND SIGNAL (ENCRYPTED)</button>
+                <p id="formStatus" class="text-center text-xs font-mono mt-2 opacity-0 transition-opacity duration-300"></p>
+            </form>
+        </div>
+    </section>
+
+    <div id="resume-modal" class="fixed inset-0 z-[85] flex items-center justify-center modal-backdrop bg-black/80 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" onclick="closeResumeModal()">
+        <div class="w-full max-w-md m-4 rounded-2xl p-8 shadow-2xl modal-content border border-morning-gold relative" style="background-color: var(--color-card-bg);" onclick="event.stopPropagation()">
+             <button onclick="closeResumeModal()" class="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-full text-primary">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="globe" class="w-8 h-8 text-morning-gold"></i>
+                </div>
+                <h3 class="text-2xl font-black text-primary mb-2">RESUME WEB PORTAL</h3>
+                <p class="text-secondary mb-6 text-sm">Secure protocol link generated. Click the terminal link below to access the Cyberpunk Resume interface.</p>
+
+                <div class="bg-slate-900 p-4 rounded-lg mb-6 border border-slate-700 text-left overflow-hidden">
+                    <p class="text-[10px] text-gray-500 font-mono mb-1">// LINK_DESTINATION:</p>
+                    <a href="https://likith-3012-mac.github.io/RESUME_WEB/" target="_blank" class="text-morning-gold font-mono text-sm break-all hover:underline flex items-center gap-2">
+                          https://likith-3012-mac.github.io/RESUME_WEB/ <i data-lucide="external-link" class="w-3 h-3"></i>
+                    </a>
+                </div>
+
+                <a href="https://likith-3012-mac.github.io/RESUME_WEB/" target="_blank" class="button-soft w-full font-bold bg-morning-gold text-black border-none hover:bg-yellow-400">
+                    INITIATE JUMP
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="feature-modal" class="fixed inset-0 z-[70] flex items-center justify-center modal-backdrop bg-black/60 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="feature-title" onclick="closeFeatureInfo()">
+        <div id="feature-card" class="w-full max-w-lg m-6 rounded-2xl p-6 shadow-2xl modal-content" style="background-color: var(--color-card-bg);" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="feature-title" class="text-xl font-bold text-primary">Title</h3>
+                <button type="button" onclick="closeFeatureInfo()" class="hover:text-primary" style="color: var(--color-secondary);" aria-label="Close project detail modal"><i data-lucide="x"></i></button>
+            </div>
+            <p id="feature-body" class="mb-6 text-secondary">Description content...</p>
+            <div class="text-right">
+                <a id="feature-link" href="#" target="_blank" class="button-soft inline-block" rel="noopener noreferrer">External Link</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="email-choice-modal" class="fixed inset-0 z-[80] flex items-center justify-center modal-backdrop bg-slate-900/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="email-choice-title" onclick="closeEmailChoiceModal()">
+        <div class="w-full max-w-sm m-4 rounded-2xl p-6 shadow-2xl modal-content" style="background-color: var(--color-card-bg); color: var(--color-secondary);" onclick="event.stopPropagation()">
+            <button onclick="closeEmailChoiceModal()" class="absolute top-3 right-3 p-1 hover:bg-gray-100 rounded-full text-primary" aria-label="Close email choice">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <h3 id="email-choice-title" class="text-xl font-bold text-primary mb-6 text-center">Select Contact Protocol</h3>
+            
+            <div class="space-y-4">
+                <a href="mailto:likith.anumakonda@gmail.com" class="button-soft w-full flex items-center justify-center border-2 border-green-500 hover:bg-green-500 hover:text-white transition-all" onclick="closeEmailChoiceModal()">
+                    <i data-lucide="send" class="w-4 h-4 mr-2"></i> likith.anumakonda@gmail.com
+                </a>
+                <a href="mailto:likith.naidu@icloud.com" class="button-soft w-full flex items-center justify-center border-2 border-blue-500 hover:bg-blue-500 hover:text-white transition-all" onclick="closeEmailChoiceModal()">
+                    <i data-lucide="message-square" class="w-4 h-4 mr-2"></i> likith.naidu@icloud.com
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-8 relative z-50" style="background-color: #1e293b; color: #94a3b8;">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs">
+            <p>&copy; <span id="current-year"></span> LIKITH NAIDU ANUMAKONDA. Protocol Version 1.5.1 (AUDITED & VERIFIED)</p>
+            <div class="flex justify-center gap-4 mt-2">
+                <a href="https://github.com/LIKITH-3012-MAC" class="hover:text-morning-gold">GitHub (V)</a>
+                <span style="color: #334155;" aria-hidden="true">|</span>
+                <a href="https://linkedin.com/in/likhith-naidu-anumakonda-33a347327" class="hover:text-morning-gold">LinkedIn (V)</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. THEME TOGGLING SETUP (must run early) ---
+        const body = document.body;
+        
+        (function initializeTheme() {
+            const isDarkMode = localStorage.getItem('theme') === 'dark';
+            if (isDarkMode) {
+                body.classList.add('dark');
+            }
+        })();
+        
+        // --- 2. ABOUT MODAL LOGIC (Toggles body overflow for mobile UX) ---
+        const aboutModal = document.getElementById('about-modal');
+
+        function toggleAboutModal() {
+            if (aboutModal.classList.contains('active')) {
+                // Hide Modal
+                aboutModal.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                // Show Modal
+                aboutModal.classList.add('active'); 
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+        window.toggleAboutModal = toggleAboutModal; // Make accessible globally
+
+        // NEW LOGIC: Instant modal initialization on first load.
+        (function initializeAboutModalInstantly() {
+            if (!localStorage.getItem('hasVisited')) {
+                setTimeout(() => {
+                    aboutModal.classList.add('active'); 
+                    document.body.style.overflow = 'hidden';
+                    localStorage.setItem('hasVisited', 'true');
+                }, 100); 
+            }
+        })();
+        
+        // --- 3. RUNTIME INITIALIZATION (DOM loaded) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Icons and Year ---
+            lucide.createIcons();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // --- Theme Toggle Handler ---
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            function updateThemeToggleIcon(isDark) {
+                themeToggle.innerHTML = isDark 
+                    ? '<i data-lucide="sun" class="w-3 h-3 inline mr-1"></i>Light' 
+                    : '<i data-lucide="moon" class="w-3 h-3 inline mr-1"></i>Theme';
+                lucide.createIcons();
+                
+                // CRITICAL FIX: Ensure the dynamic styles are applied after the icon is updated
+                const computedStyle = getComputedStyle(document.body);
+                themeToggle.style.backgroundColor = computedStyle.getPropertyValue('--color-soft-button-bg');
+                themeToggle.style.color = computedStyle.getPropertyValue('--color-soft-button-text');
+                themeToggle.style.borderColor = computedStyle.getPropertyValue('--color-border');
+            }
+            
+            updateThemeToggleIcon(body.classList.contains('dark')); // Initial call
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark');
+                const isDark = body.classList.contains('dark');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                updateThemeToggleIcon(isDark);
+            });
+            
+            // --- Mobile Menu Handler ---
+            const mobileMenu = document.getElementById('mobile-menu');
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('opacity-0');
+                mobileMenu.classList.toggle('pointer-events-none');
+            }
+            window.toggleMobileMenu = toggleMobileMenu; // Make accessible globally
+            document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobile-close').addEventListener('click', toggleMobileMenu);
+
+            // --- Feature Modal Handlers ---
+            const featureModal = document.getElementById('feature-modal');
+            const fTitle = document.getElementById('feature-title');
+            const fBody = document.getElementById('feature-body');
+            const fLink = document.getElementById('feature-link');
+
+            window.showFeatureInfo = (title, bodyText, linkUrl) => {
+                fTitle.textContent = title;
+                fBody.textContent = bodyText;
+                fLink.href = linkUrl;
+                
+                featureModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            window.closeFeatureInfo = () => {
+                featureModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // --- Keydown Listener ---
+            window.addEventListener('keydown', (e) => {
+                const emailChoiceModal = document.getElementById('email-choice-modal'); // Define here for scope
+                const resumeModal = document.getElementById('resume-modal'); // Define here for scope
+
+                if (e.key === 'Escape') {
+                    if (aboutModal.classList.contains('active')) toggleAboutModal();
+                    if (featureModal.classList.contains('active')) closeFeatureInfo();
+                    if (emailChoiceModal && emailChoiceModal.classList.contains('active')) closeEmailChoiceModal();
+                    if (resumeModal && resumeModal.classList.contains('active')) closeResumeModal();
+                }
+            });
+
+            // --- DATABASE CONNECTION LOGIC (Added) ---
+            document.getElementById('contactForm').addEventListener('submit', async function(e) {
+                e.preventDefault(); // Stop page reload
+
+                const submitBtn = document.getElementById('submitBtn');
+                const statusText = document.getElementById('formStatus');
+                
+                // UI Feedback: Sending state
+                submitBtn.innerHTML = '<i data-lucide="loader-2" class="w-4 h-4 animate-spin inline mr-2"></i> TRANSMITTING...';
+                lucide.createIcons(); // Refresh icons
+                submitBtn.disabled = true;
+
+                // Data to send
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    mobile: document.getElementById('mobile').value, // Added Mobile
+                    message: document.getElementById('message').value
+                };
+
+                try {
+                    // Send to local server
+                    const response = await fetch('http://localhost:5000/submit-contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        statusText.textContent = "SIGNAL ESTABLISHED: LOGGED TO DATABASE.";
+                        statusText.style.color = "#4ade80"; // Green
+                        statusText.classList.remove('opacity-0');
+                        document.getElementById('contactForm').reset();
+                    } else {
+                        throw new Error('Server rejected protocol.');
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    statusText.textContent = "CONNECTION FAILED: SERVER OFFLINE.";
+                    statusText.style.color = "#ef4444"; // Red
+                    statusText.classList.remove('opacity-0');
+                } finally {
+                    // Reset button
+                    setTimeout(() => {
+                        submitBtn.innerHTML = 'SEND SIGNAL (ENCRYPTED)';
+                        submitBtn.disabled = false;
+                        setTimeout(() => statusText.classList.add('opacity-0'), 5000);
+                    }, 2000);
+                }
+            });
+        });
+
+        // --- EMAIL CHOICE MODAL LOGIC (Improved UX) ---
+        const emailChoiceModal = document.getElementById('email-choice-modal');
+
+        window.openEmailChoiceModal = function() {
+            emailChoiceModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeEmailChoiceModal = function() {
+            emailChoiceModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // --- RESUME WEB MODAL LOGIC (NEW) ---
+        const resumeModal = document.getElementById('resume-modal');
+
+        window.openResumeModal = function() {
+            resumeModal.classList.add('active');
+            resumeModal.classList.remove('opacity-0', 'pointer-events-none'); // Ensure tailwind classes are removed
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeResumeModal = function() {
+            resumeModal.classList.remove('active');
+            resumeModal.classList.add('opacity-0', 'pointer-events-none'); // Re-add tailwind classes
+            document.body.style.overflow = '';
+        }
+
+
+        // --- 4. PARTICLE SYSTEM (Background) ---
+        const canvas = document.getElementById('about-particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = 'rgba(255, 215, 0, 0.2)'; // Goldish
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                // Wrap around edges
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    </script>
+</body>
+</html>

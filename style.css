@@ -1,0 +1,342 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* CORE VARIABLES: Centralized Theme Colors */
+/* ------------------------------------------------------------------------------------------------ */
+:root {
+    /* Base Colors */
+    --gold: #FFD700;
+    
+    /* LIGHT MODE DEFAULTS */
+    --color-primary: #1e293b; 
+    --color-secondary: #475569; 
+    --color-bg: #f8fafc; 
+    --color-card-bg: #ffffff;
+    --color-border: #e2e8f0; 
+    --color-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    --color-soft-button-bg: #ffffff;
+    --color-soft-button-text: #1f2937;
+    --color-timeline-border: rgba(255, 215, 0, 0.3);
+    --color-skill-tag-bg: #fef9c3; 
+    --color-skill-tag-text: #854d0e; 
+    --color-nav-bg: rgba(255, 255, 255, 0.7);
+}
+
+/* DARK MODE OVERRIDES */
+body.dark {
+    --color-primary: #e2e8f0; 
+    --color-secondary: #94a3b8; 
+    --color-bg: #071025; 
+    --color-card-bg: #0f172a; 
+    --color-border: #334155; 
+    --color-shadow: none; 
+    --color-soft-button-bg: #1e293b; 
+    --color-soft-button-text: #ffffff;
+    --color-timeline-border: rgba(255, 215, 0, 0.1);
+    --color-skill-tag-bg: #4c3000;
+    --color-skill-tag-text: #ffebb0;
+    --color-nav-bg: rgba(15, 23, 42, 0.8);
+}
+
+/* Custom Tailwind Configuration via CSS for Extra Small Screens */
+@media (min-width: 480px) { 
+    .xs\:text-5xl { font-size: 3rem; line-height: 1; }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/* KEYFRAMES */
+/* ------------------------------------------------------------------------------------------------ */
+
+@keyframes pulse-border {
+    0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+}
+@keyframes title-ripple {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.01); opacity: 0.98; }
+}
+
+/* SUCCESS CHECKMARK ANIMATION */
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+@keyframes scale {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+}
+@keyframes fill {
+    100% { box-shadow: inset 0px 0px 0px 30px #4ade80; }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/* GENERAL & TAILWIND UTILITY REPLACEMENT */
+/* ------------------------------------------------------------------------------------------------ */
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-secondary);
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+/* CREATIVE: Global Aura */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -2;
+    background: radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 90%, rgba(30, 144, 255, 0.03) 0%, transparent 20%);
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* 🚀 ADVANCED SCROLLING PERFORMANCE ENHANCEMENT */
+#navbar, #contact-bar, .section-card, .modal-content, .soft-title, #mobile-menu {
+    will-change: transform, opacity;
+    transform: translateZ(0); 
+}
+
+/* CUSTOM TAILWIND EXTENSIONS VIA CSS */
+.text-morning-gold { color: var(--gold); }
+.border-morning-gold { border-color: var(--gold); }
+.shadow-morning-gold-sm { box-shadow: 0 4px 6px -1px rgba(255, 215, 0, 0.3); }
+
+/* SOFT BUTTON STYLES (Enhanced Glow) */
+.button-soft {
+    background-color: var(--color-soft-button-bg);
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    color: var(--color-soft-button-text);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-align: center;
+}
+.button-soft:hover {
+    background-color: var(--gold);
+    color: #1f2937;
+    transform: translateY(-2px) translateZ(0);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 10px 15px -3px rgba(255, 215, 0, 0.3);
+}
+body.dark .button-soft:hover {
+    background-color: var(--gold);
+    color: #1f2937;
+}
+
+/* GLOW TEXT EFFECT */
+.text-glow { position: relative; display: inline-block; }
+.text-glow::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    filter: blur(4px);
+    color: var(--gold);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* SECTION CARDS */
+.section-card {
+    background-color: var(--color-card-bg);
+    border-radius: 1.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--color-shadow);
+    transition: transform 0.3s ease, border-color 0.3s, background-color 0.3s;
+}
+.section-card:hover {
+    border-color: rgba(255, 215, 0, 0.8);
+    transform: scale(1.01) translateZ(0); 
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+}
+
+/* TITLES */
+.soft-title {
+    color: var(--color-primary);
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    text-shadow: 2px 2px 0 #fef3c7; 
+    transition: color 0.3s, text-shadow 0.3s;
+    animation: title-ripple 8s infinite ease-in-out;
+}
+body.dark .soft-title { 
+    text-shadow: 2px 2px 0 rgba(255,215,0,0.2); 
+}
+
+/* SKILL TAGS */
+.skill-tag {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px;
+    background-color: var(--color-skill-tag-bg);
+    color: var(--color-skill-tag-text);
+    font-weight: 700;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    margin-bottom: 0.4rem;
+}
+.skill-tag:hover {
+    background-color: var(--gold);
+    color: var(--color-primary); 
+    transform: scale(1.1) translateZ(0); 
+}
+
+/* VERIFIED STAMP */
+.verified-stamp {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background-color: rgba(255, 215, 0, 0.1);
+    margin-left: 0.5rem;
+    letter-spacing: 0.05em;
+}
+
+/* TIMELINE */
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid var(--color-timeline-border);
+    margin-bottom: 2rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 0.25rem;
+    width: 16px;
+    height: 16px;
+    background-color: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--color-bg); 
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+    transition: border-color 0.3s;
+}
+
+/* INPUTS */
+.input-soft {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: var(--color-card-bg);
+    color: var(--color-primary);
+    outline: none;
+    transition: all 0.3s;
+}
+.input-soft:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5);
+}
+
+/* NAVBAR & CONTACT BAR */
+#navbar {
+    background-color: var(--color-nav-bg); 
+    border-bottom: 1px solid var(--color-border);
+}
+#contact-bar {
+    width: 95%; 
+    max-width: 400px;
+    padding: 0.5rem 1rem;
+}
+#contact-bar a { padding: 0.6rem; }
+#contact-bar a i { width: 1.1rem; height: 1.1rem; }
+@media (min-width: 768px) {
+    #contact-bar { max-width: 512px; padding: 0.5rem; }
+}
+
+/* MODAL COMMON STYLES */
+#about-modal, #feature-modal, #email-choice-modal, #resume-modal, #success-modal {
+    visibility: hidden; 
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out, visibility 0s 0.3s;
+}
+#about-modal.active, #feature-modal.active, #email-choice-modal.active, #resume-modal.active, #success-modal.active {
+    visibility: visible; 
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease-out, visibility 0s;
+}
+.modal-content {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform: scale(0.95) translateZ(0); 
+}
+.active .modal-content {
+    transform: scale(1) translateZ(0); 
+}
+
+/* SUCCESS MODAL SPECIFICS */
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #4ade80;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+.checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 0 auto 1rem;
+    box-shadow: inset 0px 0px 0px #4ade80;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+/* DIVIDERS */
+.section-divider-glow {
+    position: relative;
+    height: 1px;
+    background: transparent;
+    margin: 4rem 0;
+}
+.section-divider-glow::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.6;
+    filter: blur(1px);
+}
+.section-divider-glow::after {
+    content: '// PROTOCOL BREAKPOINT :: AUDITED LOG //';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: var(--gold);
+    background-color: var(--color-bg);
+    padding: 0 1rem;
+    letter-spacing: 0.1em;
+    z-index: 10;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+/* Utility Class Fixes */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }

@@ -5,16 +5,17 @@ const cors = require('cors');
 const compression = require('compression');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
+// NEW: Import Google AI
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
 
-// --- 1. Middleware ---
 app.use(compression());
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// --- 2. Rate Limiting (Traffic Control) ---
+// --- Rate Limiting ---
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, 
     max: 100, 
@@ -22,58 +23,74 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// --- 3. Database Connection (The "Crash Proof" Pool) ---
-const dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL.split('?')[0] : '';
+// --- AI Setup (The Brain of Prometheus) ---
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+// --- Database Connection ---
+const dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL.split('?')[0] : '';
 const pool = mysql.createPool({
     uri: dbUrl,
     waitForConnections: true,
-    connectionLimit: 5, // Lower limit for stability on Free Tier
+    connectionLimit: 5,
     queueLimit: 0,
-    enableKeepAlive: true, // <--- CRITICAL FIX: Keeps the line open
+    enableKeepAlive: true,
     keepAliveInitialDelay: 0,
     ssl: { rejectUnauthorized: false }
 });
 
-// Test the connection immediately on startup
-pool.getConnection((err, connection) => {
-    if (err) {
-        console.error("❌ Database Connection Failed:", err.message);
-    } else {
-        console.log("✅ Connected to Aiven Cloud Database successfully!");
-        connection.release(); // Always release the connection back to the pool
-    }
-});
-
-// Keep-Alive Loop: Pings the DB every 60 seconds to prevent "Closed State" error
+// --- Keep-Alive Loop ---
 setInterval(() => {
     pool.query('SELECT 1', (err) => {
         if (err) console.error('⚠️ Keep-alive ping failed:', err.message);
     });
 }, 60000); 
 
-// --- 4. Routes ---
-app.get('/', (req, res) => res.send('Likith Portfolio Backend is Live & Stable! 🚀'));
+// --- ROUTES ---
 
+// 1. Chat Route (The New Feature)
+app.post('/api/chat', async (req, res) => {
+    const { message } = req.body;
+    
+    if (!message) return res.status(400).json({ error: "Message required" });
+
+    try {
+        // The "System Prompt" - This gives the AI its personality
+        const prompt = `
+            You are Prometheus AI, a virtual assistant created by Likith Naidu.
+            Likith is an AI-ML Architect and Full Stack Engineer.
+            Answer questions briefly and professionally about his portfolio.
+            If asked about skills, mention Python, Java, and Prometheus AI.
+            User: ${message}
+        `;
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        
+        res.json({ reply: text });
+    } catch (error) {
+        console.error("AI Error:", error);
+        res.status(500).json({ error: "Prometheus is offline temporarily." });
+    }
+});
+
+// 2. Contact Route (Existing)
 app.post('/api/contact', (req, res) => {
     const { name, email, message } = req.body;
-    
-    if (!name || !email || !message) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
+    if (!name || !email || !message) return res.status(400).json({ error: 'All fields required' });
 
     const sql = 'INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)';
-    
-    // Using pool.execute handles the connection release automatically
     pool.execute(sql, [name, email, message], (err, result) => {
         if (err) {
-            console.error("❌ Insert Error:", err);
-            return res.status(500).json({ error: 'Failed to save message' });
+            console.error("Insert Error:", err);
+            return res.status(500).json({ error: 'Failed to save' });
         }
-        res.json({ success: true, message: 'Message Saved to Cloud!' });
+        res.json({ success: true, message: 'Message Saved!' });
     });
 });
 
-// --- 5. Start Server ---
+app.get('/', (req, res) => res.send('Prometheus AI Backend Online 🚀'));
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
